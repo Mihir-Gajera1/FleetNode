@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+  <title>FleetTrack</title>
+  
+  
+  
+      <link rel="stylesheet" href="style.css">
+
+  
+</head>
+
+<body>
+ 
+  <div id="login-box">
+  <div class="left">
+    <h1>Sign up</h1>
+  
+    <input type ="text" name="companyname" placeholder="Your Company Name" id ="companyname"/ >
+    <input type="text" name="number" placeholder="Phonenumber" id = "phonenumber"/>
+    <input type="text" name="number" placeholder="Otp" id = "otp" />
+    <input type="password" name="password" placeholder="Password" id = "password"/>
+    <input type="password" name="password2" placeholder="Retype password" id ="password2" />
+   <input type="button" id='getotp'>Get OTP</button>
+    <input type="button" id='signup'>Sign Up</button>
+  <!--  <button type='submit' value="Get otp" onclick = "getotp()"/>-->
+    <input type="submit" name="signup_submit" value="Sign me up" onclick="signup()" />
+  	<div id="recaptcha-container"></div>
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+  </div>
+  
+  <div class="right">
+    <span class="loginwith">Sign in with<br />social network</span>
+    
+    <button class="social-signin facebook">Log in using password</button>
+  
+    
+  </div>
+  <div class="or">OR</div>
+</div>
+  
+  
+<script src="main.js"></script>
+</body>
+
+</html>
