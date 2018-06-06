@@ -7,18 +7,19 @@ const otpbutton = document.getElementById('getotp');
 const signupbutton  = document.getElementById('signup');
 otpbutton.addEventListener('click',otp);
 signupbutton.addEventListener('click',signup);
-//button.addEventListener('click',otp,false);
 
 function otp() {
   console.log('SENDING OTP');
   const number = phoneNumber.value.replace(/\D/g, '');
   const text = "OTP";
-  fetch('/', {
+  console.log(number);
+  fetch('/register', {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
     },
-    body: JSON.stringify({number: number,text: text})
+
+    body: JSON.stringify({number: number,type: text})
   })
   .then(function(res){
     console.log(res);
@@ -37,15 +38,15 @@ function signup(){
   const rpswd = password2.value.replace(/\D/g, '');
   const otpnum = otpNumber.value.replace(/\D/g, '');
   const text = "SIGNUP";
-  fetch('/', {
+  fetch('/register', {
     method: 'post',
     headers: {
       'Content-type': 'application/json'
     },
-    body: JSON.stringify({companyname: companyname,pswd:pswd,rpswd:rpswd ,pnum: phonenumber ,otpnum: otpnum,text:text})
+    body: JSON.stringify({companyname: companyname,pswd:pswd,rpswd:rpswd ,pnum: phonenumber ,otpnum: otpnum,type:text})
   })
   .then(function(res){
-    console.log(res);
+    console.log(res.msg);
   })
   .catch(function(err){
     console.log(err);
