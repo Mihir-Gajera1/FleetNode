@@ -1,6 +1,6 @@
 var SendOtp = require('sendotp');
 var sendOtp = new SendOtp('217185ASckRx215b07feb6');
-
+var database = require('./database.js');
 module.exports = function(app){
 
 app.get('/register',function(req,res){
@@ -18,6 +18,7 @@ app.post('/register', (req, res) => {
   			console.log(data);
 			});
 			sendOtp.setOtpExpiry('5');
+			res.json({msg:"OTP SENT"});
 		}
 		if("SIGNUP"==type)
 		{
@@ -28,8 +29,20 @@ app.post('/register', (req, res) => {
 			sendOtp.verify(contactNumber,otpforver, function (error, data, response) {
   			console.log(data);
  			 if(data.type == 'success') {
-  			console.log('OTP verified successfully');}
-  			if(data.type == 'error') console.log('OTP verification failed')});
+  			console.log('OTP verified successfully');
+
+
+  					database.registerUser(req,res);
+
+  	
+  		}
+  			if(data.type == 'error'){ console.log('OTP verification failed');
+  				res.json({msg:"Invalid OTP"});
+  		}
+
+  		});
+			
+  			
   		}
 
 });

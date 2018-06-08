@@ -20,10 +20,13 @@ function otp() {
     },
 
     body: JSON.stringify({number: number,type: text})
+  //  console.log(res.status);
   })
-  .then(function(res){
-    console.log(res);
-  })
+ .then(response => { 
+  return response.json(); 
+}).then(data => { 
+  alert(JSON.stringify(data));
+})
   .catch(function(err){
     console.log(err);
   });
@@ -45,9 +48,11 @@ function signup(){
     },
     body: JSON.stringify({companyname: companyname,pswd:pswd,rpswd:rpswd ,pnum: phonenumber ,otpnum: otpnum,type:text})
   })
-  .then(function(res){
-    console.log(res.msg);
-  })
+  .then(response => { 
+  return response.json(); 
+}).then(data => { 
+  alert(JSON.stringify(data));
+})
   .catch(function(err){
     console.log(err);
   });

@@ -4,6 +4,7 @@ var SendOtp = require('sendotp');
 var sendOtp = new SendOtp('217185ASckRx215b07feb6');
 const ejs = require('ejs');
 var signup = require('./signup.js');
+var login = require('./login.js');
 var app = express();
 
 app.set('view engine', 'html');
@@ -14,7 +15,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 signup(app);
-
+login(app);
 app.get('/', (req, res) => {
   res.send('invaild endpoint');
 });
